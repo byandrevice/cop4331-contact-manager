@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Register page for new users -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Register | Contact Manager</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Create Account</h1>
+
+    <!-- This form will eventually call api/register.php through register.js -->
+    <form id="registerForm">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" required>
+
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" required>
+
+      <label for="registerLogin">Username</label>
+      <input type="text" id="registerLogin" name="registerLogin" required>
+
+      <label for="registerPassword">Password</label>
+      <input type="password" id="registerPassword" name="registerPassword" required>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <p id="registerMessage" class="message"></p>
+
+    <p>
+      Already have an account?
+      <a href="login.html">Log in</a>
+    </p>
+
+    <p>
+      <a href="index.html">Back to home</a>
+    </p>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Main contacts dashboard after a user logs in -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Contacts | Contact Manager</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>My Contacts</h1>
+
+    <!-- Search area.
+         Requirement: search must use an API endpoint and support partial matches.
+         Do not load/cache all contacts client side just to search them. -->
+    <section>
+      <h2>Search Contacts</h2>
+
+      <form id="searchForm">
+        <label for="searchText">Search by first or last name</label>
+        <input
+          type="text"
+          id="searchText"
+          name="searchText"
+          placeholder="Example: jo"
+        >
+
+        <button type="submit">Search</button>
+      </form>
+    </section>
+
+    <!-- Add contact area.
+         Requirement: users can add their own contacts. -->
+    <section>
+      <h2>Add Contact</h2>
+
+      <form id="addContactForm">
+        <label for="contactFirstName">First Name</label>
+        <input type="text" id="contactFirstName" name="contactFirstName" required>
+
+        <label for="contactLastName">Last Name</label>
+        <input type="text" id="contactLastName" name="contactLastName" required>
+
+        <label for="contactPhone">Phone</label>
+        <input type="tel" id="contactPhone" name="contactPhone">
+
+        <label for="contactEmail">Email</label>
+        <input type="email" id="contactEmail" name="contactEmail">
+
+        <button type="submit">Add Contact</button>
+      </form>
+    </section>
+
+    <!-- Contacts will be rendered here later by contacts.js.
+         Each contact row/card should eventually include edit and delete options. -->
+    <section>
+      <h2>Contact Results</h2>
+
+      <div id="contactsList">
+        <p>No contacts loaded yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/contacts.js"></script>
+</body>
+</html>

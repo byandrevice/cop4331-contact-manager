@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Login page for existing users -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Login | Contact Manager</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Login</h1>
+
+    <!-- This form will eventually call api/login.php through login.js -->
+    <form id="loginForm">
+      <label for="loginName">Username</label>
+      <input type="text" id="loginName" name="loginName" required>
+
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" name="loginPassword" required>
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p id="loginMessage" class="message"></p>
+
+    <p>
+      New user?
+      <a href="register.html">Create an account</a>
+    </p>
+
+    <p>
+      <a href="index.html">Back to home</a>
+    </p>
+  </main>
+
+  <!-- api.js provides sendRequest(); login.js will handle form behavior -->
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
