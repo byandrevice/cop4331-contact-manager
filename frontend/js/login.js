@@ -8,3 +8,4 @@ function doLogin() {
     
     // Your AJAX code continues here... ????
 }
+
