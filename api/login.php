@@ -17,7 +17,7 @@ $login = $inData["login"];
 $password = $inData["password"];
 
 // Connect to DB
-$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
 // Check connection
 if ($conn->connect_error) {
@@ -29,6 +29,7 @@ if ($conn->connect_error) {
 $stmt = $conn->prepare("SELECT ID, Password FROM Users WHERE Login = ?");
 $stmt->bind_param("s", $login);
 $stmt->execute();
+$result = $stmt->get_result();
 
 // If user exists
 if ($row = $result->fetch_assoc()) {
