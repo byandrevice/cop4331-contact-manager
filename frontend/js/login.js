@@ -33,6 +33,8 @@ async function doLogin() {
         return;
     }
 
+    // Invalid Username or Password
+
     // Loading state
     button.disabled = true;
     button.textContent = 'Signing in...';
@@ -51,8 +53,8 @@ async function doLogin() {
             localStorage.setItem('userId', data.id);
             localStorage.setItem('username', username);
 
-            // Redirect on success — change 'dashboard.html' to your target page
-            window.location.href = 'dashboard.html';
+            // Redirect to contacts.html
+            window.location.href = 'contacts.html';
         } else {
             message.textContent = data.error || 'Invalid username or password.';
         }
@@ -65,3 +67,4 @@ async function doLogin() {
         button.textContent = 'Submit';
     }
 }
+

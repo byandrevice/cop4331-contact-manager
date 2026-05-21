@@ -1,6 +1,3 @@
-<!-- I want the login col tobe stay fix and not changing the size when moving,
-I will try to fix it im have time
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,15 +5,18 @@ I will try to fix it im have time
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
     <script src="js/login.js" defer></script>
     <script src="js/register.js" defer></script>
+    <script src="js/contact.js" defer></script>
 </head>
 
 <body>
 
     <div class="showcase">
-        <img src="images/showcase.png" alt="Showcase Graphic">
+        <img src="images/church.png" alt="Showcase Graphic">
     </div>
 
     <div class="auth-panel">
@@ -28,13 +28,13 @@ I will try to fix it im have time
 
         <div class="card">
 
-            <img src="images/dragon_logo.png" alt="Lampsm Logo" class="logo">
+            <img src="images/church.png" alt="Lampsm Logo" class="logo">
 
             <h2 class="card-title">Login to Small Project</h2>
 
             <form action="#" method="POST" onsubmit="event.preventDefault();">
                 <div class="form-fields">
-                    <input type="text" id="login_username" placeholder="Username" required>
+                    <input type="text"     id="login_username" placeholder="Username" required>
                     <input type="password" id="login_password" placeholder="Password" required>
                 </div>
 
@@ -52,20 +52,6 @@ I will try to fix it im have time
 
         </div>
     </div>
-
-    <script>
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('time').textContent = now.toLocaleTimeString('en-US', {
-                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
-            });
-            document.getElementById('date').textContent = now.toLocaleDateString('en-US', {
-                weekday: 'short', month: 'short', day: 'numeric'
-            });
-        }
-        updateClock();
-        setInterval(updateClock, 1000);
-    </script>
 
 </body>
 </html>
