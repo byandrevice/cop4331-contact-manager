@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js" defer></script>
+    <script src="js/register.js" defer></script>
+    <script src="js/contact.js" defer></script>
+</head>
+
+<body>
+    <!-- --------------------Main Background Image-------------------- -->
+    <div class="showcase">
+        <img src="images/church.png" alt="Showcase Graphic">
+    </div>
+
+    <!-- --------------------Login Page and Background-------------------- -->
+    <div class="auth-panel">
+
+        <!-- ---Uperright Day/Time--- -->
+        <div class="clock">
+            <div id="date"></div>
+            <div id="time"></div>
+        </div>
+
+        <div class="card">
+
+            <img src="images/church.png" alt="Lampsm Logo" class="logo">  <!-- Logo -->
+
+            <h2 class="card-title">Login to Small Project</h2>
+
+            <!-- ---userName and Password Box--- -->
+            <form action="#" method="POST" onsubmit="event.preventDefault();">
+                <div class="form-fields">
+                    <input type="text" id="login_username" placeholder="Username" required
+                            pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$" />
+                    <input type="password" id="login_password" placeholder="Password" required
+                            pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}" />
+                </div>
+
+                 <!-- Run login.js when user hit Submit button -->
+                <button id="login_submit" type="button" onclick="doLogin();"> 
+                    Submit
+                </button>
+            </form>
+
+            <!-- ---Move user to Signup page when user dont have account. link with register.html --- -->
+            <div class="signup-link">
+                Don't have an account?
+                <a href="register.html">Sign up</a>
+            </div>
+
+            <div id="login_message"></div>
+
+        </div>
+    </div>
+
+</body>
+</html>
