@@ -15,14 +15,19 @@
 
 <body>
 
+  <!-- --------------------Simple color background in contacts.css #06040a - deepest background -------------------- -->
+
+   <!-- ---Uperleft Day/Time--- -->
   <section class="header">
     <div class="clock">
       <span id="date"></span>
       <span id="time"></span>
     </div>
 
+    <!-- ---Center Logo--- -->
     <img src="images/dragon_logo.png" alt="Lampsm Logo" class="logo">
 
+    <!-- ---Upperright logout button, run doLogout() at contacts.js-- -->
     <nav class="navigation">
       <a href="#" onclick="doLogout(event)">Log Out</a>
     </nav>
@@ -42,6 +47,7 @@
   <div class="card">
     <h3>Add Contact</h3>
 
+    <!-- First and Last Name -->
     <form method="POST" action="#">
       <div class="name-row">
         <div class="field">
@@ -54,16 +60,19 @@
         </div>
       </div>
 
+      <!-- user Email -->
       <div class="field">
         <label for="email">Email</label>
         <input required type="email" id="email" name="email" placeholder="email@gmail.com" />
       </div>
 
+      <!-- user Phone number -->
       <div class="field">
         <label for="phone">Phone</label>
         <input type="tel" id="phone" name="phone" placeholder="(000) 000-0000" />
       </div>
 
+      <!-- ---run addContact() at contacts.js-- -->
       <button type="button" onclick="addContact()">Add Contact</button>
     </form>
   </div>

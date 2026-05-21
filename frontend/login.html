@@ -14,13 +14,15 @@
 </head>
 
 <body>
-
+    <!-- --------------------Main Background Image-------------------- -->
     <div class="showcase">
         <img src="images/church.png" alt="Showcase Graphic">
     </div>
 
+    <!-- --------------------Login Page and Background-------------------- -->
     <div class="auth-panel">
 
+        <!-- ---Uperright Day/Time--- -->
         <div class="clock">
             <div id="date"></div>
             <div id="time"></div>
@@ -28,21 +30,26 @@
 
         <div class="card">
 
-            <img src="images/church.png" alt="Lampsm Logo" class="logo">
+            <img src="images/church.png" alt="Lampsm Logo" class="logo">  <!-- Logo -->
 
             <h2 class="card-title">Login to Small Project</h2>
 
+            <!-- ---userName and Password Box--- -->
             <form action="#" method="POST" onsubmit="event.preventDefault();">
                 <div class="form-fields">
-                    <input type="text"     id="login_username" placeholder="Username" required>
-                    <input type="password" id="login_password" placeholder="Password" required>
+                    <input type="text" id="login_username" placeholder="Username" required
+                            pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$" />
+                    <input type="password" id="login_password" placeholder="Password" required
+                            pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}" />
                 </div>
 
-                <button id="login_submit" type="button" onclick="doLogin();">
+                 <!-- Run login.js when user hit Submit button -->
+                <button id="login_submit" type="button" onclick="doLogin();"> 
                     Submit
                 </button>
             </form>
 
+            <!-- ---Move user to Signup page when user dont have account. link with register.html --- -->
             <div class="signup-link">
                 Don't have an account?
                 <a href="register.html">Sign up</a>
