@@ -1,0 +1,178 @@
+/* ── Reset & Base ─────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #0f172a, #1e293b); /* slate-900 → slate-800 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: white;
+}
+
+/* ── Card ─────────────────────────────────────── */
+.card {
+    width: 100%;
+    max-width: 24rem;
+    background-color: rgba(15, 23, 42, 0.8); /* slate-900/80 */
+    backdrop-filter: blur(8px);
+    border: 1px solid #334155; /* slate-700 */
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ── Header ───────────────────────────────────── */
+.card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+}
+
+.card-sub {
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: #cbd5e1; /* slate-300 */
+}
+
+/* ── Error Box ────────────────────────────────── */
+.error-box {
+    background-color: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    color: #f87171; /* red-400 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.error-box[hidden] { display: none; }
+.error-box p[hidden] { display: none; }
+
+/* ── Form Fields ──────────────────────────────── */
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* First / Last name side by side */
+.name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: #1e293b; /* slate-800 */
+    border: 1px solid #475569; /* slate-600 */
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 0.875rem;
+    outline: none;
+    transition: all 150ms ease;
+}
+
+input::placeholder {
+    color: #94a3b8; /* slate-400 */
+}
+
+input:focus {
+    border-color: #6366f1; /* indigo-500 */
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+}
+
+.input-info {
+    font-size: 0.75rem;
+    color: #64748b; /* slate-500 */
+    padding-left: 0.25rem;
+}
+
+/* ── Buttons ──────────────────────────────────── */
+.form-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.form-actions button {
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+/* Reset button */
+#reg_reset {
+    background-color: #1e293b; /* slate-800 */
+    border: 1px solid #475569; /* slate-600 */
+    color: white;
+    font-weight: 500;
+}
+
+#reg_reset:hover {
+    background-color: #334155; /* slate-700 */
+    border-color: #64748b;     /* slate-500 */
+}
+
+/* Submit button */
+#reg_submit {
+    background-color: #4f46e5; /* indigo-600 */
+    border: none;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+#reg_submit:hover {
+    background-color: #6366f1; /* indigo-500 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+#reg_submit:active {
+    background-color: #4338ca; /* indigo-700 */
+}
+
+/* ── Login Link ───────────────────────────────── */
+.login-register {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #94a3b8; /* slate-400 */
+}
+
+.login-link {
+    color: #818cf8; /* indigo-400 */
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 0.25rem;
+    transition: color 0.15s ease;
+}
+
+.login-link:hover {
+    color: #a5b4fc; /* indigo-300 */
+    text-decoration: underline;
+}

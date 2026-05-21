@@ -1,0 +1,330 @@
+/* ═══════════════════════════════════════════════
+   Palette:
+     --void        #06040a   deepest background
+     --obsidian    #0d0b14   card surface
+     --stone       #161221   raised surface
+     --border      #2a1f3d   cool-purple border
+     --border-hot  #5c1a1a   crimson border accent
+     --crimson     #9b1c1c   primary accent
+     --crimson-lit #c0392b   hover crimson
+     --gold        #c9a343   secondary accent
+     --ash         #a89bb0   muted body text
+     --parchment   #e8e0d5   primary text
+   ═══════════════════════════════════════════════ */
+
+/* ── Reset ────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Variables ────────────────────────────────── */
+:root {
+    --void:        #06040a;
+    --obsidian:    #0d0b14;
+    --stone:       #161221;
+    --border:      #2a1f3d;
+    --border-hot:  #5c1a1a;
+    --crimson:     #9b1c1c;
+    --crimson-lit: #c0392b;
+    --gold:        #c9a343;
+    --ash:         #a89bb0;
+    --parchment:   #e8e0d5;
+    --glow:        rgba(155, 28, 28, 0.18);
+    --font-head:   'Cinzel', serif;
+    --font-body:   'Crimson Text', serif;
+}
+
+/* ── Base ────────────Need to be fix─────────────────────────── */ 
+body {
+    min-height: 100vh;
+    background-color: var(--void);
+    background-image:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(100,20,20,0.12) 0%, transparent 65%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--parchment);
+    -webkit-font-smoothing: antialiased;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+}
+
+/* ── Header ───────────────────────────────────── */
+.header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: 4rem;
+    background-color: rgba(6, 4, 10, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-hot);
+    box-shadow: 0 1px 0 0 rgba(201,163,67,0.12), 0 4px 24px rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.75rem;
+}
+
+/* ── Clock ────────────────────────────────────── */
+.clock { display: flex; flex-direction: column; gap: 1px; }
+
+#time {
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+}
+
+#date {
+    font-size: 0.65rem;
+    color: var(--ash);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ── Logo ─────────────────────────────────────── */
+.logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(155,28,28,0.5));
+    transition: filter 0.3s ease;
+}
+.logo:hover { filter: drop-shadow(0 0 10px rgba(201,163,67,0.6)); }
+
+/* ── Navigation ───────────────────────────────── */
+.navigation a {
+    font-family: var(--font-head);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-decoration: none;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border-hot);
+    border-radius: 3px;
+    background: rgba(92,26,26,0.1);
+    transition: all 0.2s ease;
+}
+.navigation a:hover {
+    color: var(--parchment);
+    background: rgba(155,28,28,0.25);
+    border-color: var(--crimson-lit);
+    box-shadow: 0 0 12px var(--glow);
+}
+
+/* ── Alert ────────────────────────────────────── */
+.alert-box {
+    position: fixed;
+    top: 5.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    width: 100%;
+    max-width: 26rem;
+    padding: 0 1rem;
+}
+.alert {
+    background: var(--obsidian);
+    border: 1px solid var(--border-hot);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    text-align: center;
+    color: var(--ash);
+    box-shadow: 0 0 24px var(--glow), 0 10px 40px rgba(0,0,0,0.5);
+}
+.alert ion-icon { font-size: 1.5rem; color: var(--crimson-lit); }
+
+/* ── Cards ────────────────────────────────────── */
+.card {
+    width: 100%;
+    max-width: 52rem;
+    margin: 1.75rem auto;
+    background: var(--obsidian);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--crimson);
+    border-radius: 4px;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.02),
+        inset 0 1px 0 rgba(255,255,255,0.03),
+        0 20px 60px rgba(0,0,0,0.6),
+        -4px 0 20px rgba(155,28,28,0.08);
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.card h3 {
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+.card h3::after {
+    content: '✦';
+    position: absolute;
+    right: 0;
+    font-size: 0.6rem;
+    color: var(--crimson);
+    top: 50%;
+    transform: translateY(-70%);
+}
+
+/* ── Form ─────────────────────────────────────── */
+form { display: flex; flex-direction: column; gap: 1rem; }
+
+.name-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+/* ── Labels ───────────────────────────────────── */
+label {
+    font-family: var(--font-head);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ash);
+}
+
+/* ── Inputs ───────────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+#search {
+    width: 100%;
+    background: var(--stone);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.55rem 0.9rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--parchment);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+input::placeholder { color: #3d3350; font-style: italic; }
+input:focus {
+    border-color: var(--crimson);
+    background: #120f1c;
+    box-shadow: 0 0 0 2px rgba(155,28,28,0.2), inset 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* ── Add Contact Button ───────────────────────── */
+button[onclick="addContact()"] {
+    align-self: flex-end;
+    font-family: var(--font-head);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    background: var(--crimson);
+    border: 1px solid var(--crimson-lit);
+    border-radius: 3px;
+    padding: 0.55rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(155,28,28,0.3);
+    margin-top: 0.25rem;
+}
+button[onclick="addContact()"]:hover {
+    background: var(--crimson-lit);
+    box-shadow: 0 4px 24px rgba(192,57,43,0.45);
+    transform: translateY(-1px);
+}
+button[onclick="addContact()"]:active {
+    transform: translateY(0);
+}
+
+/* ── Table Wrapper ────────────────────────────── */
+.table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+}
+
+/* ── Table ────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; }
+
+thead {
+    background: var(--void);
+    border-bottom: 1px solid var(--border-hot);
+}
+
+thead th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-family: var(--font-head);
+    font-size: 0.58rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(42,31,61,0.6);
+    transition: background 0.15s ease;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: rgba(155,28,28,0.06); }
+
+tbody td {
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--ash);
+    vertical-align: middle;
+}
+tbody td:first-child { color: var(--parchment); font-weight: 600; }
+
+/* ── Table Action Buttons ─────────────────────── */
+tbody td button {
+    font-family: var(--font-head);
+    font-size: 0.56rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--ash);
+    border-radius: 2px;
+    padding: 0.28rem 0.65rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-right: 0.4rem;
+}
+tbody td button:hover {
+    background: var(--stone);
+    border-color: var(--ash);
+    color: var(--parchment);
+}
+
+/* Delete — crimson tint */
+tbody td button.delete,
+tbody td button[onclick*="elete"],
+tbody td button[onclick*="emove"] {
+    border-color: var(--border-hot);
+    color: #e05252;
+}
+tbody td button.delete:hover,
+tbody td button[onclick*="elete"]:hover,
+tbody td button[onclick*="emove"]:hover {
+    background: rgba(155,28,28,0.15);
+    border-color: var(--crimson-lit);
+    color: #f87171;
+    box-shadow: 0 0 8px rgba(155,28,28,0.25);
+}
+
+/* ── Scrollbar ────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--border-hot); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--crimson); }
