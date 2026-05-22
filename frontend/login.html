@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Login page for existing users -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Login | Contact Manager</title>
-
-  <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/login.js" defer></script>
+    <script src="js/register.js" defer></script>
+    <script src="js/contact.js" defer></script>
 </head>
+
 <body>
-  <main class="container">
-    <h1>Login</h1>
+    <!-- --------------------Main Background Image-------------------- -->
+    <div class="showcase">
+        <img src="images/church.png" alt="Showcase Graphic">
+    </div>
 
-    <!-- This form will eventually call api/login.php through login.js -->
-    <form id="loginForm">
-      <label for="loginName">Username</label>
-      <input type="text" id="loginName" name="loginName" required>
+    <!-- --------------------Login Page and Background-------------------- -->
+    <div class="auth-panel">
 
-      <label for="loginPassword">Password</label>
-      <input type="password" id="loginPassword" name="loginPassword" required>
+        <!-- ---Uperright Day/Time--- -->
+        <div class="clock">
+            <div id="date"></div>
+            <div id="time"></div>
+        </div>
 
-      <button type="submit">Login</button>
-    </form>
+        <div class="card">
 
-    <p id="loginMessage" class="message"></p>
+            <img src="images/church.png" alt="Lampsm Logo" class="logo">  <!-- Logo -->
 
-    <p>
-      New user?
-      <a href="register.html">Create an account</a>
-    </p>
+            <h2 class="card-title">Login to Small Project</h2>
 
-    <p>
-      <a href="index.html">Back to home</a>
-    </p>
-  </main>
+            <!-- ---userName and Password Box--- -->
+            <form action="#" method="POST" onsubmit="event.preventDefault();">
+                <div class="form-fields">
+                    <input type="text" id="login_username" placeholder="Username" required
+                            pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$" />
+                    <input type="password" id="login_password" placeholder="Password" required
+                            pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}" />
+                </div>
 
-  <!-- api.js provides sendRequest(); login.js will handle form behavior -->
-  <script src="js/api.js"></script>
-  <script src="js/login.js"></script>
+                 <!-- Run login.js when user hit Submit button -->
+                <button id="login_submit" type="button" onclick="doLogin();"> 
+                    Submit
+                </button>
+            </form>
+
+            <!-- ---Move user to Signup page when user dont have account. link with register.html --- -->
+            <div class="signup-link">
+                Don't have an account?
+                <a href="register.html">Sign up</a>
+            </div>
+
+            <div id="login_message"></div>
+
+        </div>
+    </div>
+
 </body>
 </html>

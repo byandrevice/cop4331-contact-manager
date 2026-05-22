@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- Register page for new users -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Contact Manager</title>
+    <link rel="stylesheet" href="css/register.css">
 
-  <title>Register | Contact Manager</title>
-
-  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-  <main class="container">
-    <h1>Create Account</h1>
+  <main class="card">
+    <div class="card-header">
+      <h1 class="card-title">Create Account</h1>
+      <p class="card-sub">Join us today</p>
+    </div>
 
     <!-- This form will eventually call api/register.php through register.js -->
+    <div id="signupResult" class="error-box" style="display: none;"></div>
+
     <form id="registerForm">
-      <label for="firstName">First Name</label>
-      <input type="text" id="firstName" name="firstName" required>
+      <div class="form-fields">
+        <div class="name-row">
+          <div>
+            <input type="text" id="firstName" placeholder="First Name" required>
+          </div>
+          <div>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+          </div>
+        </div>
 
-      <label for="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName" required>
+        <div>
+          <input type="text" id="username" placeholder="Username" required>
+        </div>
 
-      <label for="registerLogin">Username</label>
-      <input type="text" id="registerLogin" name="registerLogin" required>
+        <div class="input-group">
+          <input type="password" id="password" placeholder="Password" required>
+          <p class="input-info">Password must be 8+ characters and contain both letters and numbers.</p>
+        </div>
+      </div>
 
-      <label for="registerPassword">Password</label>
-      <input type="password" id="registerPassword" name="registerPassword" required>
-
-      <button type="submit">Register</button>
+      <div class="form-actions">
+        <button type="reset" id="reg_reset">Reset</button>
+        <button type="submit" id="reg_submit">Register</button>
+      </div>
     </form>
 
-    <p id="registerMessage" class="message"></p>
-
-    <p>
+    <p class="login-register">
       Already have an account?
-      <a href="login.html">Log in</a>
-    </p>
-
-    <p>
-      <a href="index.html">Back to home</a>
+      <a href="login.html" class="login-link">Log in</a>
     </p>
   </main>
 
