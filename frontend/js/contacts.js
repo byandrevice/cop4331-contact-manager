@@ -10,3 +10,22 @@ function doLogout(event) {
     saveCookie(); // Clear login cookies
     window.location.href = "login.html"; // Redirect to login.html
 }
+
+// Display the logged-in user's name
+function displayUserInfo() {
+    const firstName = localStorage.getItem('firstName');
+    const lastName = localStorage.getItem('lastName');
+    const userSpan = document.getElementById('userName');
+    if (userSpan && firstName && lastName) {
+      userSpan.textContent = `${firstName} ${lastName}`;
+    }
+  }
+  
+  // Check authentication on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    displayUserInfo();
+    const userId = localStorage.getItem('userId');
+    if (!userId || userId === "0") {
+      window.location.href = "login.html";
+    }
+});

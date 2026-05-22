@@ -14,7 +14,8 @@
 // Example later:
 // const API_BASE_URL = "http://yourdomain.xyz/api";
 
-const API_BASE_URL = "lampcm.me";
+//const API_BASE_URL = "lampcm.me";
+const API_BASE_URL = "https://lampcm.me/api";
 
 // Sends a POST request to a PHP API endpoint.
 // endpoint example: "login.php"
@@ -26,6 +27,7 @@ async function sendRequest(endpoint, data) {
       headers: {
         "Content-Type": "application/json"
       },
+      credentials: "include",   // send cookies (session)
       body: JSON.stringify(data)
     });
 

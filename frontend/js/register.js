@@ -30,7 +30,7 @@ function validSignUpForm(firstName, lastName, username, password) {
     return true;
 }
 
-function doSignup() {
+async function doSignup() {
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
     const username = document.getElementById("username").value;
@@ -55,7 +55,7 @@ function doSignup() {
         return;
     }
 
-    let tmp = {
+    let payload = {
         firstName: firstName,
         lastName: lastName,
         login: username,
