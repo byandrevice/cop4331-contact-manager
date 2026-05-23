@@ -2,7 +2,7 @@
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 
-include "config.example.php";
+include "config.php";
 
 // READ JSON input
 $inData = json_decode(file_get_contents("php://input"), true);
