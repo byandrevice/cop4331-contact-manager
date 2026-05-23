@@ -112,3 +112,10 @@ function saveCookie(firstName, lastName, userId) {
     date.setTime(date.getTime() + (minutes * 60 * 1000));
     document.cookie = `firstName=${firstName},lastName=${lastName},userId=${userId};expires=${date.toGMTString()};path=/`;
 }
+
+// Eye icon to see passwords
+// Quick copy UserName and Password  -- or -- Screenshot (to save if user forget)
+// Update and Improve the html and css
+
+// Problem  with API need to double check and fix at doSignup()
+// Fix name of function like saveCookie() or doSignup()
