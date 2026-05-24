@@ -1,14 +1,16 @@
-// Hook up the form submission
+// Wait for DOM to load, attach form submit handler
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("registerForm");
     if (form) {
-        form.addEventListener("submit", function(event) {
-            event.preventDefault(); // Stop page reload
-            doSignup();
-        });
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        doSignup();
+      });
     }
-});
 
+    setupPasswordToggle(); // attach eye toggle for password field
+});
+  
 
 function validSignUpForm(firstName, lastName, username, password) {
     // Check if any fields are completely empty
@@ -66,56 +68,55 @@ async function doSignup() {
     let url = apiBase + '/SignUp.' + apiExt;
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
+    xhr.open("POST", "api/register.php", true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    xhr.withCredentials = true;   // send cookies if your backend uses sessions
 
-    try {
-        xhr.onreadystatechange = function () {
-            if (this.readyState != 4) {
-                return;
-            }
+    // This function runs when the server responds
+    xhr.onreadystatechange = function() {
+        if (this.readyState !== 4) return;  // not done yet
 
-            if (this.status == 409) {
-                resultMsg.innerHTML = "User already exists";
-                resultMsg.style.display = "block";
-                return;
-            }
-
-            if (this.status == 200) {
-                let jsonObject = JSON.parse(xhr.responseText);
-                
-                // Save global or local context before baking cookie
-                let userId = jsonObject.id;
-                let fName = jsonObject.firstName || firstName;
-                let lName = jsonObject.lastName || lastName;
-                
-                saveCookie(fName, lName, userId);
-                
-                // Redirect to a dashboard or homepage after successful signup
-                window.location.href = "contacts.html"; 
-            } else {
-                resultMsg.innerHTML = "Error: Status " + this.status;
-                resultMsg.style.display = "block";
-            }
-        };
-
-        xhr.send(jsonPayload);
-    } catch (err) {
-        resultMsg.innerHTML = err.message;
+        if (this.status === 200) {
+        // Success: parse the JSON response
+        const jsonObject = JSON.parse(this.responseText);
+        // Assuming server returns { id: 123, firstName: "John", lastName: "Doe" }
+        if (jsonObject.id > 0) {
+            // Save user info to localStorage (not cookies)
+            localStorage.setItem('userId', jsonObject.id);
+            localStorage.setItem('username', username);
+            localStorage.setItem('firstName', jsonObject.firstName || firstName);
+            localStorage.setItem('lastName', jsonObject.lastName || lastName);
+            // Redirect to contacts page
+            window.location.href = "contacts.html";
+        } else {
+            // Server returned id = 0 or error
+            resultMsg.innerHTML = jsonObject.error || "Registration failed.";
+            resultMsg.style.display = "block";
+        }
+        } 
+        else if (this.status === 409) {
+        // Conflict: user already exists
+        resultMsg.innerHTML = "User already exists.";
         resultMsg.style.display = "block";
-    }
+        }
+        else {
+        // Any other HTTP error
+        resultMsg.innerHTML = "Server error (status " + this.status + "). Please try again.";
+        resultMsg.style.display = "block";
+        }
+    };
+
+    // Send the request
+    xhr.send(jsonPayload);
 }
 
-function saveCookie(firstName, lastName, userId) {
-    let minutes = 20;
-    let date = new Date();
-    date.setTime(date.getTime() + (minutes * 60 * 1000));
-    document.cookie = `firstName=${firstName},lastName=${lastName},userId=${userId};expires=${date.toGMTString()};path=/`;
+function togglePassword() {
+    const toggle   = document.getElementById( "togglePassword" );
+    const password = document.getElementById( "password" );
+
+    if( !toggle || !password ) return;
+
+    const type = password.getAttribute( "type" ) === "password" ? "text" : "password";
+    password.setAttribute( "type", type );
+    toggle.innerHTML = type === "password" ? "𖤓" : "⚛";
 }
-
-// Eye icon to see passwords
-// Quick copy UserName and Password  -- or -- Screenshot (to save if user forget)
-// Update and Improve the html and css
-
-// Problem  with API need to double check and fix at doSignup()
-// Fix name of function like saveCookie() or doSignup()

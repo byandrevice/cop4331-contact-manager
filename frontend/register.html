@@ -7,7 +7,7 @@
     <title>Contacts — Small Project</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/contacts.css">
+    <link rel="stylesheet" href="css/register.css">
     <script src="js/login.js" defer></script>
     <script src="js/register.js" defer></script>
     <script src="js/contact.js" defer></script>
@@ -40,9 +40,16 @@
         </div>
 
         <div class="input-group">
-          <input type="password" id="password" placeholder="Password" required>
-          <p class="input-info">Password must be 8+ characters and contain both letters and numbers.</p>
-        </div>
+          <div class="password-wrap">
+              <input type="password" id="password" placeholder="Password" required
+                     oninput="checkPassword(this.value)">
+              <span class="eye-icon" id="togglePassword" onclick="togglePassword()">𖤓</span>
+          </div>
+          <ul class="password-rules">
+              <li id="rule-length">  At least 8 characters</li>
+              <li id="rule-letter">  Contains a letter</li>
+              <li id="rule-number">  Contains a number</li>
+          </ul>
       </div>
 
       <div class="form-actions">

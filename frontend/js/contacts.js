@@ -1,4 +1,4 @@
-function doLogout(event) {
+/* function doLogout(event) {
     if (event) event.preventDefault(); 
     // Clear global user variables
     userID = 0;
@@ -28,4 +28,4 @@ function displayUserInfo() {
     if (!userId || userId === "0") {
       window.location.href = "login.html";
     }
-});
+}); */
