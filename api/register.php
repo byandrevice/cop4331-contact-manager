@@ -18,6 +18,7 @@
 // }
 
 header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
 
 include("config.php");
 
@@ -37,9 +38,6 @@ if ($firstName == "" || $lastName == "" || $login == "" || $password == "") {
     ]);
     exit();
 }
-
-// Check DB connection
-$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
 if ($conn->connect_error) {
     echo json_encode([
