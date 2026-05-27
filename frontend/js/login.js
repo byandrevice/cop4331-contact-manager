@@ -103,3 +103,21 @@ function doLogin() {
  
     xhr.send( JSON.stringify( jsonPayload ) );
 }
+// Theme toggle
+document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("themeToggle");
+
+    // Remember last theme on page load
+    if (localStorage.getItem("theme") === "day") {
+        document.body.classList.add("day-mode");
+    }
+
+    // Click logo to switch themes
+    if (toggle) {
+        toggle.addEventListener("click", function () {
+            document.body.classList.toggle("day-mode");
+            const current = document.body.classList.contains("day-mode");
+            localStorage.setItem("theme", current ? "day" : "night");
+        });
+    }
+});
