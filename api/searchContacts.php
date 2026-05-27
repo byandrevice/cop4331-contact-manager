@@ -34,7 +34,6 @@ $inData = json_decode(file_get_contents("php://input"), true);
 // Check that JSON was read correctly
 if ($inData === null) {
     echo json_encode([
-        "success" => false,
         "results" => [],
         "error" => "Invalid JSON input."
     ]);
@@ -48,7 +47,6 @@ $search = $inData["search"] ?? "";
 // Make sure the frontend sent a valid userId.
 if ($userId == 0) {
     echo json_encode([
-        "success" => false,
         "results" => [],
         "error" => "Missing or invalid userId."
     ]);
@@ -71,7 +69,6 @@ $stmt = $conn->prepare(
 // If SQL statement cant be prepared, return a JSON error.
 if (!$stmt) {
     echo json_encode([
-        "success" => false,
         "results" => [],
         "error" => "Failed to prepare search query."
     ]);
