@@ -323,6 +323,175 @@ tbody td button[onclick*="emove"]:hover {
     box-shadow: 0 0 8px rgba(155,28,28,0.25);
 }
 
+/* ── Day Mode Theme ─ */
+body.day-mode {
+    background-color: #c9c9c9;
+    background-image:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(80,80,80,0.16) 0%, transparent 65%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    color: #1b1b1b;
+}
+
+/* Header */
+body.day-mode .header {
+    background-color: rgba(210, 210, 210, 0.92);
+    border-bottom: 1px solid #555;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+}
+
+/* Clock */
+body.day-mode #time {
+    color: #5c1a1a;
+}
+
+body.day-mode #date {
+    color: #3d3d3d;
+}
+
+/* Logo */
+.logo {
+    cursor: pointer;
+}
+
+body.day-mode .logo {
+    filter: drop-shadow(0 0 6px rgba(60,60,60,0.55));
+}
+
+body.day-mode .logo:hover {
+    filter: drop-shadow(0 0 10px rgba(92,26,26,0.6));
+}
+
+/* Navigation */
+body.day-mode .navigation a {
+    color: #1f1f1f;
+    background: rgba(255,255,255,0.35);
+    border: 1px solid #5c1a1a;
+}
+
+body.day-mode .navigation a:hover {
+    color: #000;
+    background: rgba(155,28,28,0.18);
+    border-color: #9b1c1c;
+}
+
+/* Cards */
+body.day-mode .card {
+    background: #dedede;
+    color: #1b1b1b;
+    border: 1px solid #7a7a7a;
+    border-left: 3px solid #5c1a1a;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.3),
+        0 20px 50px rgba(0,0,0,0.22),
+        -4px 0 18px rgba(92,26,26,0.12);
+}
+
+body.day-mode .card h3 {
+    color: #5c1a1a;
+    border-bottom: 1px solid #9a9a9a;
+}
+
+body.day-mode .card h3::after {
+    color: #9b1c1c;
+}
+
+/* Labels */
+body.day-mode label {
+    color: #333;
+}
+
+/* Inputs */
+body.day-mode input[type="text"],
+body.day-mode input[type="email"],
+body.day-mode input[type="tel"],
+body.day-mode #search {
+    background: #f1f1f1;
+    color: #1b1b1b;
+    border: 1px solid #777;
+}
+
+body.day-mode input::placeholder {
+    color: #666;
+}
+
+body.day-mode input:focus {
+    border-color: #8b0000;
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(139,0,0,0.18);
+}
+
+/* Add Contact Button */
+body.day-mode button[onclick="addContact()"] {
+    background: #5c1a1a;
+    color: #f5f5f5;
+    border: 1px solid #8b0000;
+    box-shadow: 0 4px 15px rgba(92,26,26,0.25);
+}
+
+body.day-mode button[onclick="addContact()"]:hover {
+    background: #8b0000;
+    box-shadow: 0 4px 24px rgba(92,26,26,0.35);
+}
+
+/* Table */
+body.day-mode .table-wrapper {
+    border: 1px solid #777;
+}
+
+body.day-mode thead {
+    background: #b8b8b8;
+    border-bottom: 1px solid #5c1a1a;
+}
+
+body.day-mode thead th {
+    color: #5c1a1a;
+}
+
+body.day-mode tbody tr {
+    border-bottom: 1px solid #b0b0b0;
+}
+
+body.day-mode tbody tr:hover {
+    background: rgba(92,26,26,0.08);
+}
+
+body.day-mode tbody td {
+    color: #2a2a2a;
+}
+
+body.day-mode tbody td:first-child {
+    color: #000;
+}
+
+/* Table Buttons */
+body.day-mode tbody td button {
+    border: 1px solid #777;
+    color: #222;
+    background: rgba(255,255,255,0.35);
+}
+
+body.day-mode tbody td button:hover {
+    background: #cfcfcf;
+    border-color: #5c1a1a;
+    color: #000;
+}
+
+/* Delete Buttons */
+body.day-mode tbody td button.delete,
+body.day-mode tbody td button[onclick*="elete"],
+body.day-mode tbody td button[onclick*="emove"] {
+    border-color: #8b0000;
+    color: #8b0000;
+}
+
+body.day-mode tbody td button.delete:hover,
+body.day-mode tbody td button[onclick*="elete"]:hover,
+body.day-mode tbody td button[onclick*="emove"]:hover {
+    background: rgba(139,0,0,0.14);
+    border-color: #8b0000;
+    color: #5c1a1a;
+}
+
 /* ── Scrollbar ────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--void); }
