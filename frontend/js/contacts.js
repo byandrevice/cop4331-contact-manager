@@ -28,4 +28,15 @@ function displayUserInfo() {
     if (!userId || userId === "0") {
       window.location.href = "login.html";
     }
-}); */
+}); */ 
+
+// Toggle between night mode and day mode when logo is clicked
+document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("themeToggle");
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", function () {
+            document.body.classList.toggle("day-mode");
+        });
+    }
+});
