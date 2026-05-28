@@ -19,7 +19,12 @@ $inData = json_decode(file_get_contents("php://input"), true);
 
 // Safety check
 if (!isset($inData["login"]) || !isset($inData["password"])) {
-    echo json_encode(["id" => 0, "error" => "Missing login or password"]);
+    echo json_encode([
+        "id" => 0,
+        "firstName" => "",
+        "lastName" => "",
+        "error" => "Missing login or password"
+    ]);
     exit();
 }
 
@@ -31,12 +36,17 @@ $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
 // Check connection
 if ($conn->connect_error) {
-    echo json_encode(["id" => 0, "error" => "Database connection failed"]);
+    echo json_encode([
+        "id" => 0,
+        "firstName" => "",
+        "lastName" => "",
+        "error" => "Database connection failed"
+    ]);
     exit();
 }
 
 // Find user by login
-$stmt = $conn->prepare("SELECT ID, Password FROM Users WHERE Login = ?");
+$stmt = $conn->prepare("SELECT ID, FirstName, LastName, Password FROM Users WHERE Login = ?");
 $stmt->bind_param("s", $login);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -46,14 +56,29 @@ if ($row = $result->fetch_assoc()) {
     
     // Compare password
     if ($row["Password"] === $password) {
-        echo json_encode(["id" => $row["ID"], "error" => ""]);
+        echo json_encode([
+            "id" => $row["ID"],
+            "firstName" => $row["FirstName"],
+            "lastName" => $row["LastName"],
+            "error" => ""
+        ]);
     } else {
-        echo json_encode(["id" => 0, "error" => "Wrong password"]);
+        echo json_encode([
+            "id" => 0,
+            "firstName" => "",
+            "lastName" => "",
+            "error" => "Wrong password"
+        ]);
     }
 
 } else {
 
-    echo json_encode(["id" => 0, "error" => "User not found"]);
+    echo json_encode([
+        "id" => 0,
+        "firstName" => "",
+        "lastName" => "",
+        "error" => "User not found"
+    ]);
 }
 
 $stmt->close();
