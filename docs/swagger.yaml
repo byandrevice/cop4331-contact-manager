@@ -1,0 +1,215 @@
+openapi: 3.0.0
+info:
+  title: COP4331 Contact Manager API
+  description: API documentation for contact manager project.
+  version: 1.0.0
+servers:
+- url: http://localhost/LAMPAPI
+paths:
+  /login.php:
+    post:
+      summary: Login user
+      description: Authenticates a user with login credentials.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/login_php_body"
+        required: true
+      responses:
+        "200":
+          description: Login result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200"
+  /register.php:
+    post:
+      summary: Register user
+      description: Creates a new user account.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/register_php_body"
+        required: true
+      responses:
+        "200":
+          description: Register result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200_1"
+  /addContact.php:
+    post:
+      summary: Add contact
+      description: Adds a new contact for a user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/addContact_php_body"
+        required: true
+      responses:
+        "200":
+          description: Add contact result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200_1"
+  /searchContacts.php:
+    post:
+      summary: Search contacts
+      description: Searches contacts by first or last name.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/searchContacts_php_body"
+        required: true
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200_2"
+  /updateContact.php:
+    post:
+      summary: Update contact
+      description: Updates an existing contact.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/updateContact_php_body"
+        required: true
+      responses:
+        "200":
+          description: Update result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200_1"
+  /deleteContact.php:
+    post:
+      summary: Delete contact
+      description: Deletes a contact.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/deleteContact_php_body"
+        required: true
+      responses:
+        "200":
+          description: Delete result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/inline_response_200_1"
+components:
+  schemas:
+    login_php_body:
+      type: object
+      properties:
+        login:
+          type: string
+        password:
+          type: string
+    inline_response_200:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        error:
+          type: string
+    register_php_body:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        login:
+          type: string
+        password:
+          type: string
+    inline_response_200_1:
+      type: object
+      properties:
+        id:
+          type: integer
+        error:
+          type: string
+    addContact_php_body:
+      type: object
+      properties:
+        userId:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+    searchContacts_php_body:
+      type: object
+      properties:
+        userId:
+          type: integer
+        search:
+          type: string
+    inline_response_200_2:
+      type: object
+      properties:
+        success:
+          type: boolean
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              firstName:
+                type: string
+              lastName:
+                type: string
+              phone:
+                type: string
+              email:
+                type: string
+              dateCreated:
+                type: string
+        error:
+          type: string
+    updateContact_php_body:
+      type: object
+      properties:
+        contactId:
+          type: integer
+        userId:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+    deleteContact_php_body:
+      type: object
+      properties:
+        contactId:
+          type: integer
+        userId:
+          type: integer
+
