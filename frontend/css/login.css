@@ -294,49 +294,69 @@ input:focus {
 
 /* ── Day Mode Theme ─ */
 
-.logo {
-    cursor: pointer;
+/* Day Mode Theme Fix */
+body.day-mode {
+    background-color: #c9c9c9 !important;
+    color: #1b1b1b !important;
 }
 
-body.day-mode {
-    background-color: #c9c9c9;
-    color: #1b1b1b;
+body.day-mode .showcase {
+    background-color: #c9c9c9 !important;
 }
 
 body.day-mode .auth-panel {
-    background-color: rgba(220, 220, 220, 0.92);
+    background-color: rgba(220, 220, 220, 0.92) !important;
+    color: #1b1b1b !important;
 }
 
 body.day-mode .card {
-    background-color: #dedede;
-    color: #1b1b1b;
-    border: 1px solid #777;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    background-color: #dedede !important;
+    color: #1b1b1b !important;
+    border-color: #777 !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25) !important;
 }
 
 body.day-mode .card-title {
-    color: #5c1a1a;
+    color: #5c1a1a !important;
 }
 
 body.day-mode input {
-    background-color: #f1f1f1;
-    color: #1b1b1b;
-    border: 1px solid #777;
+    background-color: #f1f1f1 !important;
+    color: #1b1b1b !important;
+    border-color: #777 !important;
 }
 
 body.day-mode input::placeholder {
-    color: #666;
+    color: #666 !important;
 }
 
-body.day-mode button {
-    background-color: #5c1a1a;
-    color: white;
-    border: 1px solid #8b0000;
+body.day-mode button,
+body.day-mode #login_submit {
+    background-color: #5c1a1a !important;
+    color: white !important;
+    border-color: #8b0000 !important;
 }
 
-body.day-mode .signup-link,
+body.day-mode .signup-link {
+    color: #1b1b1b !important;
+}
+
 body.day-mode .signup-link a {
-    color: #1b1b1b;
+    color: #5c1a1a !important;
+}
+
+body.day-mode #login_message {
+    color: #5c1a1a !important;
+}
+
+body.day-mode .clock,
+body.day-mode #date,
+body.day-mode #time {
+    color: #1b1b1b !important;
+}
+
+.logo {
+    cursor: pointer;
 }
 
 /* ── Scrollbar ────────────────────────────────── */
