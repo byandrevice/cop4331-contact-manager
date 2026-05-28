@@ -40,6 +40,16 @@ if ($inData === null) {
     exit();
 }
 
+// Database connection check
+if ($conn->connect_error) {
+    echo json_encode([
+        "success" => false,
+        "results" => [],
+        "error" => "Database connection failed."
+    ]);
+    exit();
+}
+
 // Receive userId and search text from the frontend JSON.
 $userId = $inData["userId"] ?? 0;
 $search = $inData["search"] ?? "";

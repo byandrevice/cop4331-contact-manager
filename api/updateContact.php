@@ -7,16 +7,6 @@
 // Final purpose:
 // Receives edited contact data from the frontend as JSON.
 // Updates an existing contact that belongs to the logged-in user.
-//
-// Expected JSON request later:
-// {
-//   "userId": 1,
-//   "contactId": 3,
-//   "firstName": "John",
-//   "lastName": "Doe",
-//   "phone": "407-555-9999",
-//   "email": "john.updated@example.com"
-// }
 
 // Tell browser/frontend that file returns JSON
 header("Content-Type: application/json");
@@ -48,11 +38,13 @@ if (
     $userId == 0 ||
     $contactId == 0 ||
     $firstName == "" ||
-    $lastName == "" 
+    $lastName == "" ||
+    $phone == "" ||
+    $email == ""
 ) {
     echo json_encode([
         "id" => 0,
-        "message" => "Missing required fields"
+        "error" => "Missing required fields"
     ]);
     exit();
 }
@@ -85,6 +77,7 @@ $stmt->bind_param(
 
 $stmt->execute();
 
+// FIX: don't rely only on affected_rows
 if ($stmt->affected_rows > 0) {
     echo json_encode([
         "id" => 1,
@@ -93,7 +86,7 @@ if ($stmt->affected_rows > 0) {
 } else {
     echo json_encode([
         "id" => 0,
-        "error" => "Contact not found or no changes made"
+        "error" => "Update failed"
     ]);
 }
 
