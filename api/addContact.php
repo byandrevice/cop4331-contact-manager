@@ -82,7 +82,7 @@ $stmt->bind_param(
 
 if ($stmt->execute()) {
     echo json_encode([
-        "id" => $stmt->insert_id,
+        "id" => $conn->insert_id,
         "error" => ""
     ]);
 } else {

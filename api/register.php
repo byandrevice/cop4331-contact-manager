@@ -49,10 +49,6 @@ if ($firstName == "" || $lastName == "" || $login == "" || $password == "") {
     exit();
 }
 
-// Connect to DB (FIXED - was missing)
-$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
-// Check connection
 if ($conn->connect_error) {
     echo json_encode([
         "id" => 0,
@@ -81,7 +77,7 @@ $stmt->bind_param("ssss", $firstName, $lastName, $login, $password);
 
 if ($stmt->execute()) {
     echo json_encode([
-        "id" => $conn->insert_id,
+        "id" => $stmt->insert_id,
         "error" => ""
     ]);
 } else {

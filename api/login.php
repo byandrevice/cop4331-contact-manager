@@ -31,10 +31,6 @@ if (!isset($inData["login"]) || !isset($inData["password"])) {
 $login = $inData["login"];
 $password = $inData["password"];
 
-// Connect to DB
-$conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
-
-// Check connection
 if ($conn->connect_error) {
     echo json_encode([
         "id" => 0,
