@@ -28,16 +28,29 @@ function displayUserInfo() {
 } */
 
 // Toggle between night mode and day mode when logo is clicked
+// Toggle between night mode and day mode when logo is clicked
 document.addEventListener("DOMContentLoaded", function () {
-  const themeToggle = document.getElementById("themeToggle");
+    const themeToggle = document.getElementById("themeToggle");
 
-  if (themeToggle) {
-      themeToggle.addEventListener("click", function () {
-          document.body.classList.toggle("day-mode");
-      });
-  }
+    // Apply saved theme immediately when the page loads
+    if (localStorage.getItem("theme") === "day") {
+        document.body.classList.add("day-mode");
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener("click", function () {
+            // Change theme instantly
+            document.body.classList.toggle("day-mode");
+
+            // Save the selected theme
+            if (document.body.classList.contains("day-mode")) {
+                localStorage.setItem("theme", "day");
+            } else {
+                localStorage.setItem("theme", "night");
+            }
+        });
+    }
 });
-
 // Check authentication on page load and run initial pull
 document.addEventListener("DOMContentLoaded", () => {
   displayUserInfo();
