@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentId = localStorage.getItem('userId');
 
   if (!currentId || currentId === "0") {
-      window.location.href = "login.html";
+      window.location.href = "index.html";
       return;
   }
   
