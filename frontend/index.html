@@ -1,3 +1,8 @@
+  
+  <!-- ------------------------------------------------------------- -->
+         <!-- --------------------Login page-------------------- -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,37 +12,56 @@
     <title>Contacts — Small Project</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/contacts.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="js/login.js" defer></script>
-    <script src="js/register.js" defer></script>
-    <script src="js/contact.js" defer></script>
-    <script src="js/api.js" defer></script>
 </head>
 
-<head>
-  <!-- Basic page setup -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>COP 4331 Contact Manager</title>
-
-  <!-- Shared stylesheet -->
-  <link rel="stylesheet" href="css/styles.css">
-</head>
 <body>
-  <main class="container">
-    <h1>COP 4331 Contact Manager</h1>
-
-    <p>
-      A personal contact manager where users can register, log in,
-      and manage their own contacts.
-    </p>
-
-    <!-- Requirement: initial page offers login or signup/register -->
-    <div class="button-row">
-      <a class="button-link" href="login.html">Login</a>
-      <a class="button-link" href="register.html">Register</a>
+    <!-- --------------------Main Background Image-------------------- -->
+    <div class="showcase">
+        <img src="images/church.png" alt="Showcase Graphic">
     </div>
-  </main>
+
+    <!-- --------------------Login Page and Background-------------------- -->
+    <div class="auth-panel">
+
+        <!-- ---Uperright Day/Time--- -->
+        <div class="clock">
+            <div id="date"></div>
+            <div id="time"></div>
+        </div>
+
+        <div class="card">
+
+           <img src="images/logo_night.png" alt="Lampsm Logo" class="logo" id="themeToggle">  <!-- Logo -->
+
+            <h2 class="card-title">Login to Small Project</h2>
+
+            <!-- ---userName and Password Box--- -->
+            <form action="#" method="POST" onsubmit="event.preventDefault();">
+                <div class="form-fields">
+                    <input type="text" id="login_username" placeholder="Username" required
+                            pattern="(?=.*[a-zA-Z])[a-zA-Z0-9-_]{3,18}$" />
+                    <input type="password" id="login_password" placeholder="Password" required
+                            pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%^&*]).{8,32}" />
+                </div>
+
+                 <!-- Run login.js when user hit Submit button -->
+                <button id="login_submit" type="button" onclick="doLogin();"> 
+                    Submit
+                </button>
+            </form>
+
+            <!-- ---Move user to Signup page when user dont have account. link with register.html --- -->
+            <div class="signup-link">
+                Don't have an account?
+                <a href="register.html">Sign up</a>
+            </div>
+
+            <div id="login_message"></div>
+
+        </div>
+    </div>
+
 </body>
 </html>

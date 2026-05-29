@@ -6,7 +6,7 @@ let userId = localStorage.getItem('userId') || window.userId || 1;
 function doLogout(event) {
     if (event) event.preventDefault();
     localStorage.clear();
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
  
 function displayUserInfo() {
