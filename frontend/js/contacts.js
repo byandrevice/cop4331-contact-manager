@@ -3,29 +3,20 @@
 // ============================================================
 let userId = localStorage.getItem('userId') || window.userId || 1;
 
-/* function doLogout(event) {
-    if (event) event.preventDefault(); 
-    // Clear global user variables
-    userID = 0;
-    firstName = "";
-    lastName = "";
-    username = "";
-    password = "";
-    
-    if (typeof saveCookie === "function") saveCookie(); // Clear login cookies if helper exists
-    localStorage.clear(); // Clear storage keys
-    window.location.href = "login.html"; 
-} 
-
-// --- I dont knwo if we need this ---
+function doLogout(event) {
+    if (event) event.preventDefault();
+    localStorage.clear();
+    window.location.href = "login.html";
+}
+ 
 function displayUserInfo() {
-  const firstName = localStorage.getItem('firstName');
-  const lastName = localStorage.getItem('lastName');
-  const userSpan = document.getElementById('userName');
-  if (userSpan && firstName && lastName) {
-      userSpan.textContent = `${firstName} ${lastName}`;
-  }
-} */
+    const firstName = localStorage.getItem('firstName');
+    const lastName  = localStorage.getItem('lastName');
+    const userSpan  = document.getElementById('userName');
+    if (userSpan && firstName && lastName) {
+        userSpan.textContent = `${firstName} ${lastName}`;
+    }
+}
 
 // Toggle between night mode and day mode when logo is clicked
 // Toggle between night mode and day mode when logo is clicked

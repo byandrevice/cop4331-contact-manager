@@ -110,14 +110,30 @@ document.addEventListener("DOMContentLoaded", function () {
     // Remember last theme on page load
     if (localStorage.getItem("theme") === "day") {
         document.body.classList.add("day-mode");
+        if (toggle) {
+            toggle.src = "images/logo_day.png"; // Load day variant if set
+        } else {
+            if (toggle) {
+                toggle.src = "images/logo_night.png"; // Default fallback
+            }
+        }
     }
 
-    // Click logo to switch themes
+    // Click logo to switch themes and swap image sources
     if (toggle) {
         toggle.addEventListener("click", function () {
             document.body.classList.toggle("day-mode");
-            const current = document.body.classList.contains("day-mode");
-            localStorage.setItem("theme", current ? "day" : "night");
+            const isDayMode = document.body.classList.contains("day-mode");
+            
+            // Save current choice to browser memory
+            localStorage.setItem("theme", isDayMode ? "day" : "night");
+            
+            // Change the image instantly on the screen when clicked
+            if (isDayMode) {
+                toggle.src = "images/logo_day.png";
+            } else {
+                toggle.src = "images/logo_night.png";
+            }
         });
     }
 });
