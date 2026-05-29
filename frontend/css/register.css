@@ -116,6 +116,20 @@ body {
     text-align: center;
 }
 
+.success-box {
+    background-color: rgba(20, 50, 30, 0.6) !important;
+    color: #a3e635 !important;
+    border: 1px solid #4d7c0f !important;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    box-shadow: 0 0 15px rgba(77, 124, 15, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
 /* ── Form ─────────────────────────────────────── */
 form {
     display: flex;

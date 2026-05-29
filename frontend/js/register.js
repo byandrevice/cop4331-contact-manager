@@ -68,7 +68,7 @@ async function doSignup() {
     let url = apiBase + '/SignUp.' + apiExt;
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://147.182.148.82/API/register.php", true);
+    xhr.open("POST", "/API/register.php", true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     xhr.withCredentials = true;   // send cookies if your backend uses sessions
 
@@ -87,9 +87,21 @@ async function doSignup() {
             localStorage.setItem('firstName', jsonObject.firstName || firstName);
             localStorage.setItem('lastName', jsonObject.lastName || lastName);
             // Redirect to contacts page
-            window.location.href = "contacts.html";
+            resultMsg.className = "success-box"; 
+            resultMsg.innerHTML = "☦ Registration Successful! Welcome to the Circle... ☦";
+            resultMsg.style.display = "block";
+
+            // Disable the submit button so user dont spam click it
+            const submitBtn = document.getElementById("reg_submit");
+            if (submitBtn) submitBtn.disabled = true;
+
+            // 4. Wait a seconda then redirect
+            setTimeout(() => {
+                window.location.href = "contacts.html";
+            }, 1000);
         } else {
-            // Server returned id = 0 or error
+            // Server returned id = 0 or error /
+            resultMsg.className = "error-box";
             resultMsg.innerHTML = jsonObject.error || "Registration failed.";
             resultMsg.style.display = "block";
         }
