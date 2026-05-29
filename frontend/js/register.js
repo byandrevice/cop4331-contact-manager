@@ -68,7 +68,7 @@ async function doSignup() {
     let url = apiBase + '/SignUp.' + apiExt;
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "api/register.php", true);
+    xhr.open("POST", "http://147.182.148.82/API/register.php", true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
     xhr.withCredentials = true;   // send cookies if your backend uses sessions
 
