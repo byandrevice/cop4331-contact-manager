@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
         doSignup();
       });
     }
-
-    setupPasswordToggle(); // attach eye toggle for password field
 });
   
 
@@ -64,13 +62,11 @@ async function doSignup() {
         password: password
     };
 
-    let jsonPayload = JSON.stringify(tmp);
-    let url = apiBase + '/SignUp.' + apiExt;
+    let jsonPayload = JSON.stringify(payload);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("POST", "/API/register.php", true);
+    xhr.open("POST", "/api/register.php", true);
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-    xhr.withCredentials = true;   // send cookies if your backend uses sessions
 
     // This function runs when the server responds
     xhr.onreadystatechange = function() {
@@ -131,4 +127,36 @@ function togglePassword() {
     const type = password.getAttribute( "type" ) === "password" ? "text" : "password";
     password.setAttribute( "type", type );
     toggle.innerHTML = type === "password" ? "𖤓" : "⚛";
+}
+
+// Real-time password complexity rule validator
+function checkPassword(passwordValue) {
+    const ruleLength = document.getElementById("rule-length");
+    const ruleLetter = document.getElementById("rule-letter");
+    const ruleNumber = document.getElementById("rule-number");
+
+    if (!ruleLength || !ruleLetter || !ruleNumber) return;
+
+    // 2. Rule Check A: At least 8 characters long
+    if (passwordValue.length >= 8) {
+        ruleLength.classList.add("valid");
+    } else {
+        ruleLength.classList.remove("valid");
+    }
+
+    // 3. Rule Check B: Contains at least one letter
+    const hasLetter = [...passwordValue].some(char => (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z'));
+    if (hasLetter) {
+        ruleLetter.classList.add("valid");
+    } else {
+        ruleLetter.classList.remove("valid");
+    }
+
+    // 4. Rule Check C: Contains at least one number
+    const hasNumber = [...passwordValue].some(char => char >= '0' && char <= '9');
+    if (hasNumber) {
+        ruleNumber.classList.add("valid");
+    } else {
+        ruleNumber.classList.remove("valid");
+    }
 }
