@@ -15,7 +15,7 @@
 // const API_BASE_URL = "http://yourdomain.xyz/api";
 
 //const API_BASE_URL = "lampcm.me";
-const API_BASE_URL = "https://lampcm.me/api";
+const API_BASE_URL = "http://lampcm.me/api";
 
 // Sends a POST request to a PHP API endpoint.
 // endpoint example: "login.php"
