@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Remember last theme on page load
     if (localStorage.getItem("theme") === "day") {
-        document.documentElement.classList.add("day-mode");
+        document.body.classList.add("day-mode");
     }
 
      // Click to switch themes and swap image sources

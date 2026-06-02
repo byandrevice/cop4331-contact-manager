@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (toggle) {
         toggle.addEventListener("click", function () {
             document.body.classList.toggle("day-mode");
-            const isDayMode = document.documentElement.classList.contains("day-mode");
+            const isDayMode = document.body.classList.contains("day-mode");
             
             // Save current choice to browser memory
             localStorage.setItem("theme", isDayMode ? "day" : "night");
