@@ -490,6 +490,88 @@ body.day-mode tbody td button[onclick*="emove"]:hover {
     color: #5c1a1a !important;
 }
 
+/* ── Inline Table Input Overrides ─────────────────── */
+tbody tr input[type="text"],
+tbody tr input[type="email"] {
+    background: var(--stone) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--parchment) !important;
+    padding: 4px 8px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    border-radius: 4px;
+}
+
+tbody tr input:focus {
+    border-color: var(--crimson) !important;
+    outline: none;
+    box-shadow: 0 0 8px var(--glow);
+}
+
+/* ── Inline Edit Actions ─────────────────────────── */
+.save-btn {
+    background: var(--crimson) !important;
+    border: 1px solid var(--crimson-lit) !important;
+    color: var(--parchment) !important;
+    padding: 4px 10px;
+    margin-right: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.save-btn:hover {
+    background: var(--crimson-lit) !important;
+    box-shadow: 0 0 10px rgba(192, 57, 43, 0.4);
+}
+
+.cancel-btn {
+    background: none !important;
+    border: 1px solid var(--border) !important;
+    color: var(--ash) !important;
+    padding: 4px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--ash) !important;
+    color: var(--parchment) !important;
+}
+
+/* ── Day Mode Variations ─────────────────────────── */
+body.day-mode tbody tr input[type="text"],
+body.day-mode tbody tr input[type="email"] {
+    background: #f1f1f1 !important;
+    border: 1px solid #b8b8b8 !important;
+    color: #111111 !important;
+}
+
+body.day-mode .save-btn {
+    background: #5c1a1a !important; /* Rich crimson color for light theme */
+    border-color: #5c1a1a !important;
+    color: #ffffff !important;
+}
+
+body.day-mode .cancel-btn {
+    background: #e0e0e0 !important;
+    border: 1px solid #b8b8b8 !important;
+    color: #444444 !important;
+}
+
+body.day-mode .cancel-btn:hover {
+    background: #d4d4d4 !important;
+    color: #000000 !important;
+}
+
 /* ── Scrollbar ────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--void); }

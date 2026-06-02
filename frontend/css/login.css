@@ -178,16 +178,25 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
+/* Ornament on the divider */
 .card-title::after {
     content: '✦';
     position: absolute;
-    bottom: -0.55rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;             
+    left: 50%;               /* Pushes the starting point to the exact middle */
+    transform: translate(-50%, 50%);
     font-size: 0.55rem;
+    letter-spacing: 0;       /* Cancels out the spacing from the title text */
     color: var(--crimson);
     background: var(--obsidian);
     padding: 0 0.4rem;
+    line-height: 1;
+}
+
+/* Change the star color in Day Mode */
+body.day-mode .card-title::after {
+    color: #5c1a1a;         
+    background: #dedede;
 }
 
 /* ── Form ─────────────────────────────────────── */

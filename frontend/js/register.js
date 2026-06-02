@@ -1,11 +1,28 @@
-// Wait for DOM to load, attach form submit handler
 document.addEventListener("DOMContentLoaded", () => {
+    // Form Submit Event Handling
     const form = document.getElementById("registerForm");
     if (form) {
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        doSignup();
-      });
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            doSignup();
+        });
+    }
+
+    // Remember last theme on page load
+    if (localStorage.getItem("theme") === "day") {
+        document.documentElement.classList.add("day-mode");
+    }
+
+     // Click to switch themes and swap image sources
+    const toggle = document.getElementById("themeToggle");
+    if (toggle) {
+        toggle.addEventListener("click", function () {
+            document.body.classList.toggle("day-mode");
+            const isDayMode = document.body.classList.contains("day-mode");
+            
+            // Save current choice to browser memory
+            localStorage.setItem("theme", isDayMode ? "day" : "night");
+        });
     }
 });
   

@@ -87,13 +87,21 @@ body {
 .card-title::after {
     content: '✦';
     position: absolute;
-    bottom: -0.55rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;             
+    left: 50%;               /* Pushes the starting point to the exact middle */
+    transform: translate(-50%, 50%);
     font-size: 0.55rem;
+    letter-spacing: 0;       /* Cancels out the spacing from the title text */
     color: var(--crimson);
     background: var(--obsidian);
     padding: 0 0.4rem;
+    line-height: 1;
+}
+
+/* Change the star color in Day Mode */
+body.day-mode .card-title::after {
+    color: #5c1a1a;         
+    background: #fdfdfd;
 }
 
 .card-sub {
@@ -321,6 +329,80 @@ input:focus {
 .login-link:hover {
     color: var(--parchment);
     text-decoration: underline;
+}
+
+/* ── Day Mode Variables & Overrides ────────────────────────── */
+body.day-mode {
+    background-color: #e3e3e3;
+    background-image: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(92,26,26,0.15) 0%, rgba(255,255,255,0) 80%);
+}
+
+/* Card Surface Override */
+body.day-mode .card {
+    background: #fdfdfd;
+    border: 1px solid #b8b8b8;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* Typography Color Changes */
+body.day-mode .card-title {
+    color: #5c1a1a;
+}
+
+body.day-mode .card-sub,
+body.day-mode .login-register {
+    color: #555555;
+}
+
+/* Input Form Controls Styling */
+body.day-mode input[type="text"],
+body.day-mode input[type="password"] {
+    background: #f1f1f1;
+    border: 1px solid #b8b8b8;
+    color: #111111;
+}
+
+body.day-mode input[type="text"]::placeholder,
+body.day-mode input[type="password"]::placeholder {
+    color: #777777;
+}
+
+body.day-mode input:focus {
+    border-color: var(--crimson);
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(155, 28, 28, 0.2);
+}
+
+/* Interactive Input Elements (Eye Toggle & Rules) */
+body.day-mode .eye-icon {
+    color: #5c1a1a;
+}
+
+body.day-mode .password-rules li {
+    color: #777777;
+}
+
+body.day-mode .password-rules li.valid {
+    color: #28a745;
+}
+
+/* Registration Form Buttons */
+body.day-mode #reg_reset {
+    border: 1px solid #b8b8b8;
+    color: #444444;
+}
+
+body.day-mode #reg_reset:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #000000;
+}
+
+body.day-mode .login-link {
+    color: var(--crimson);
+}
+
+body.day-mode .login-link:hover {
+    color: var(--crimson-lit);
 }
 
 /* ── Scrollbar ────────────────────────────────── */
