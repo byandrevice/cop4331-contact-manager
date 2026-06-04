@@ -8,12 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/register.css">
-
     <script src="js/register.js" defer></script>
 </head>
 
 <body>
-  <main class="card">
+  <main class="card" aria-label="Registration Form Container">
+    
     <div class="card-header">
       <h1 class="card-title" id="themeToggle" style="cursor: pointer; user-select: none;">Create Account</h1>
       <p class="card-sub">Join us today</p>
@@ -26,30 +26,29 @@
         
         <div class="name-row">
           <div>
-            <input type="text" id="firstName" placeholder="First Name" required>
+            <input type="text" id="firstName" placeholder="First Name" aria-label="First Name" required>
           </div>
           <div>
-            <input type="text" id="lastName" placeholder="Last Name" required>
+            <input type="text" id="lastName" placeholder="Last Name" aria-label="Last Name" required>
           </div>
         </div>
 
         <div>
-          <input type="text" id="username" placeholder="Username" required>
+          <input type="text" id="username" placeholder="Username" aria-label="Username" required>
         </div>
 
         <div class="input-group">
           <div class="password-wrap">
-              <input type="password" id="password" placeholder="Password" required oninput="checkPassword(this.value)">
-              <span class="eye-icon" id="togglePassword" onclick="togglePassword()">𖤓</span>
+              <input type="password" id="password" placeholder="Password" aria-label="Password" aria-describedby="password-requirements" required oninput="checkPassword(this.value)">
+              <button type="button" class="eye-icon" id="togglePassword" onclick="togglePassword()" aria-label="Show password">𖤓</button>
           </div>
-          <ul class="password-rules">
+          <ul class="password-rules" id="password-requirements">
               <li id="rule-length">At least 8 characters</li>
               <li id="rule-letter">Contains a letter</li>
               <li id="rule-number">Contains a number</li>
           </ul>
-        </div> </div>
-
-      <div class="form-actions">
+        </div> 
+      </div> <div class="form-actions">
         <button type="reset" id="reg_reset">Reset</button>
         <button type="submit" id="reg_submit">Register</button>
       </div>
