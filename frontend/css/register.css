@@ -83,6 +83,36 @@ body {
     position: relative;
 }
 
+/* ── Theme Switcher Hint ─────────────────────── */
+.theme-hint {
+    font-family: var(--font-head);
+    font-size: 0.48rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+    opacity: 0.75;
+    text-align: center;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.register-theme-hint {
+    margin-top: -0.15rem;
+}
+
+.card-header:hover .theme-hint {
+    color: var(--gold);
+    opacity: 1;
+}
+
+body.day-mode .theme-hint {
+    color: #555;
+}
+
+body.day-mode .card-header:hover .theme-hint {
+    color: #5c1a1a;
+}
+
 /* Ornament on the divider */
 .card-title::after {
     content: '✦';
